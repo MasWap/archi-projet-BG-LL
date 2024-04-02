@@ -9,6 +9,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<SampleInjectionInterface, SampleInjectionImplementation>();
 
+// Spécifier les URL d'écoute
+builder.WebHost.UseUrls("http://+:80");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,8 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
+// app.UseHttpsRedirection(); // Commenter pour supprimer la redirection HTTPS
 
 app.MapBookingsEndpoints();
 app.Run();
