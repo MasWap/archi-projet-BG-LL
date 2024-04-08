@@ -1,6 +1,11 @@
 ﻿namespace GestionHotel.Apis.Domain.Bookings
 {
-	public class IBookingService
+	public interface IBookingService
 	{
+		Task<Booking> GetBookingById(int id);
+
+		Task<List<Booking>> GetBookingsByClientId(int clientId);
+
+		Task<List<Booking>> GetBookingsByRoomId(int roomId);
 	}
 }
