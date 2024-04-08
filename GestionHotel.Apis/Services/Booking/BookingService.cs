@@ -9,7 +9,7 @@ namespace GestionHotel.Apis.Services.Booking
 			throw new NotImplementedException();
 		}
 
-		public Task<List<Domain.Bookings.Booking>> GetBookingsByClientId(int clientId)
+		public Task<List<Domain.Bookings.Booking>> GetBookingsByCustomerId(int customerId)
 		{
 			throw new NotImplementedException();
 		}

@@ -4,12 +4,12 @@ namespace GestionHotel.Apis.Services.Room
 {
 	public class RoomService : IRoomService
 	{
-		public Task<Domain.Rooms.Room> BookRoom(int roomId, int clientId, DateTime startDate, DateTime endDate, string paymentMethod)
+		public Task<Domain.Rooms.Room> BookRoom(int roomId, int customerId, DateTime startDate, DateTime endDate, string paymentMethod)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<bool> CancelReservation(int reservationId)
+		public Task<bool> CancelBooking(int bookingId)
 		{
 			throw new NotImplementedException();
 		}

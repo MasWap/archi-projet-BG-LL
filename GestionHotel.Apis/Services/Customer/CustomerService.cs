@@ -4,7 +4,7 @@ namespace GestionHotel.Apis.Services.Customer
 {
 	public class CustomerService : ICustomerService
 	{
-		public Task<Domain.Customers.Customer> CreateCustomer(Domain.Customers.Customer client)
+		public Task<Domain.Customers.Customer> CreateCustomer(Domain.Customers.Customer customer)
 		{
 			throw new NotImplementedException();
 		}
@@ -14,7 +14,7 @@ namespace GestionHotel.Apis.Services.Customer
 			throw new NotImplementedException();
 		}
 
-		public Task<Domain.Customers.Customer> UpdateCustomer(Domain.Customers.Customer client)
+		public Task<Domain.Customers.Customer> UpdateCustomer(Domain.Customers.Customer customer)
 		{
 			throw new NotImplementedException();
 		}

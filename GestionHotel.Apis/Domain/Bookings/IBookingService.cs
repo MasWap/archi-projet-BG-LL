@@ -4,7 +4,7 @@
 	{
 		Task<Booking> GetBookingById(int id);
 
-		Task<List<Booking>> GetBookingsByClientId(int clientId);
+		Task<List<Booking>> GetBookingsByCustomerId(int customerId);
 
 		Task<List<Booking>> GetBookingsByRoomId(int roomId);
 	}
