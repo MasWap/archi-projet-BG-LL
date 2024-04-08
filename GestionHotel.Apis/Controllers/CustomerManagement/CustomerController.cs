@@ -1,10 +1,12 @@
 ﻿using GestionHotel.Apis.Domain.Customers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionHotel.Apis.Controllers.CustomerManagement
 {
 	[ApiController]
 	[Route("api/customers")]
+	[Authorize]
 	public class CustomerController : ControllerBase
 	{
 		private readonly ICustomerService _customerService;

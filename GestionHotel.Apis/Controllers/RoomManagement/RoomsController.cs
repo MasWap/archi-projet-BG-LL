@@ -1,10 +1,12 @@
 ﻿using GestionHotel.Apis.Domain.Rooms;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionHotel.Apis.Controllers.RoomManagement
 {
 	[ApiController]
 	[Route("api/rooms")]
+	[Authorize]
 	public class RoomsController : ControllerBase
 	{
 		private readonly IRoomService _roomService;

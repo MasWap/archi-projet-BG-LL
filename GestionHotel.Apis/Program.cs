@@ -1,6 +1,7 @@
-using GestionHotel.Apis;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "GestionHotel API", Version = "v1" });
+});
+
+builder.Services.AddAuthentication(options =>
+{
+	options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+	options.TokenValidationParameters = new TokenValidationParameters
+	{
+		ValidateIssuer = true,
+		ValidateAudience = true,
+		ValidateLifetime = true,
+		ValidateIssuerSigningKey = true,
+		ValidIssuer = "GestionHotel.Apis",
+		ValidAudience = "GestionHotel.Apis", 
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("iUBadurEM9JbL3dtjyGkUqeVjZeqT1G9")) 
+	};
 });
 
 // Spécifier les URL d'écoute
@@ -29,11 +48,11 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHttpsRedirection(); // Commenter pour supprimer la redirection HTTPS
 
-app.UseRouting(); // Ajoutez cette ligne pour activer le routage
-app.UseAuthorization(); // Ajoutez cette ligne pour activer l'autorisation
+app.UseRouting(); 
+app.UseAuthorization(); 
 app.UseEndpoints(endpoints =>
 {
-	endpoints.MapControllers(); // Ajoutez cette ligne pour mapper les contrôleurs
+	endpoints.MapControllers(); 
 });
 
 app.Run();

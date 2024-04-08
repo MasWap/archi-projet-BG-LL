@@ -1,10 +1,12 @@
 ﻿using GestionHotel.Apis.Domain.Bookings;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionHotel.Apis.Controllers.BookingManagement
 {
 	[ApiController]
 	[Route("api/bookings")]
+	[Authorize]
 	public class BookingsController : ControllerBase
 	{
 		private readonly IBookingService _bookingService;

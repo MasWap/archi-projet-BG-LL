@@ -1,10 +1,12 @@
 ﻿using GestionHotel.Apis.Domain.Employees;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestionHotel.Apis.Controllers.EmployeeManagement
 {
 	[ApiController]
 	[Route("api/employees")]
+	[Authorize]
 	public class EmployeesController : ControllerBase
 	{
 		private readonly IEmployeeService _employeeService;
