@@ -37,8 +37,6 @@ namespace GestionHotel.Apis.Controllers.AuthentificationManagement
 
 		private bool ValidateUser(string username, string password)
 		{
-			// Remplacez cette méthode par votre propre logique de vérification des utilisateurs
-			// Par exemple, interrogez une base de données pour vérifier les informations d'identification
 			return username == "john_doe" && password == "s3cr3t_p4ssw0rd";
 		}
 	}
