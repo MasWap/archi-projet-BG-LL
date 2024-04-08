@@ -47,4 +47,3 @@ namespace GestionHotel.Apis.Controllers.CustomerManagement
 		}
 	}
 }
-}
