@@ -1,4 +1,5 @@
 ﻿using GestionHotel.Apis.Domain.Customers;
+using GestionHotel.Apis.Persistence.Repositories;
 
 namespace GestionHotel.Apis.Services.Customer
 {
