@@ -2,6 +2,8 @@
 {
 	public interface IBookingService
 	{
+		Task<IEnumerable<Booking>> GetBookings();
+
 		Task<Booking> GetBookingById(int id);
 
 		Task<List<Booking>> GetBookingsByCustomerId(int customerId);

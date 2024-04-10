@@ -11,5 +11,7 @@ namespace GestionHotel.Apis.Persistence.Repositories
 		Task<List<Booking>> GetBookingsByCustomerId(int customerId);
 
 		Task<List<Booking>> GetBookingsByRoomId(int roomId);
+
+		Task<List<Booking>> GetBookingsByDateRange(DateTime startDate, DateTime endDate);
 	}
 }

@@ -1,6 +1,11 @@
-﻿namespace GestionHotel.Apis.Persistence.Repositories
+﻿using GestionHotel.Apis.Domain.Employees;
+
+namespace GestionHotel.Apis.Persistence.Repositories
 {
-	public class IEmployeeRepository
+	public interface IEmployeeRepository
 	{
+		Task<Employee> GetEmployeeById(int id);
+
+		Task<List<Employee>> GetEmployeesByRole(string role);
 	}
 }

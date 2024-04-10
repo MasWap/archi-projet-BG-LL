@@ -4,7 +4,7 @@ using GestionHotel.Apis.Persistence.Repositories;
 
 namespace GestionHotel.Apis.Services.Booking
 {
-	public class BookingService : IBookingService
+    public class BookingService : IBookingService
 	{
 		private readonly IBookingRepository _bookingRepository;
 

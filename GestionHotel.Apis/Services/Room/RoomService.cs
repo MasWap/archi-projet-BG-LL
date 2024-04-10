@@ -1,27 +1,65 @@
 ﻿using GestionHotel.Apis.Domain.Rooms;
+using GestionHotel.Apis.Persistence.Repositories;
 
 namespace GestionHotel.Apis.Services.Room
 {
 	public class RoomService : IRoomService
 	{
-		public Task<Domain.Rooms.Room> BookRoom(int roomId, int customerId, DateTime startDate, DateTime endDate, string paymentMethod)
+		private readonly IRoomRepository _roomRepository;
+		private readonly IBookingRepository _bookingRepository;
+
+		public RoomService(IRoomRepository roomRepository, IBookingRepository bookingRepository)
 		{
-			throw new NotImplementedException();
+			_roomRepository = roomRepository;
+			_bookingRepository = bookingRepository;
 		}
 
-		public Task<bool> CancelBooking(int bookingId)
+		public void AddRoom(Domain.Rooms.Room room)
 		{
-			throw new NotImplementedException();
+			_roomRepository.AddRoom(room);
 		}
 
-		public Task<List<Domain.Rooms.Room>> GetAvailableRooms(DateTime startDate, DateTime endDate)
+		public void RemoveRoom(Domain.Rooms.Room room)
 		{
-			throw new NotImplementedException();
+			_roomRepository.RemoveRoom(room);
 		}
 
-		public Task<Domain.Rooms.Room> GetRoomById(int id)
+		public async void RemoveRoomById(int id)
 		{
-			throw new NotImplementedException();
+			var room = await _roomRepository.GetRoomById(id);
+			if (room != null)
+			{
+				_roomRepository.RemoveRoom(room);
+			}
+		}
+
+		public void UpdateRoom(Domain.Rooms.Room room)
+		{
+			_roomRepository.UpdateRoom(room);
+		}
+
+		public async Task<List<Domain.Rooms.Room>> GetAvailableRooms(DateTime startDate, DateTime endDate)
+		{
+			// Récupérer toutes les chambres
+			var rooms = await _roomRepository.GetRooms();
+
+			// Récupérer les réservations qui chevauchent la plage de dates spécifiée
+			var bookings = await _bookingRepository.GetBookingsByDateRange(startDate, endDate);
+
+			// Créer une liste d'IDs de réservations
+			var bookingIds = bookings.Select(b => b.RoomId).ToList();
+
+			// Filtrer les chambres qui n'ont pas de réservations chevauchantes
+			var availableRooms = bookingIds.FirstOrDefault() == 0
+				? rooms
+				: rooms.Where(r => !bookingIds.Contains(r.Id)).ToList();
+
+			return availableRooms;
+		}
+
+		public async Task<Domain.Rooms.Room> GetRoomById(int id)
+		{
+			return await _roomRepository.GetRoomById(id);
 		}
 	}
 }

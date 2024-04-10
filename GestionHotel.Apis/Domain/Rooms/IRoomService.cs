@@ -2,9 +2,16 @@
 {
 	public interface IRoomService
 	{
-		Task<List<Room>> GetAvailableRooms(DateTime startDate, DateTime endDate);
 		Task<Room> GetRoomById(int id);
-		Task<Room> BookRoom(int roomId, int customerId, DateTime startDate, DateTime endDate, string paymentMethod);
-		Task<bool> CancelBooking(int bookingId);
+
+		Task<List<Room>> GetAvailableRooms(DateTime startDate, DateTime endDate);
+
+		void AddRoom(Room room);
+
+		void UpdateRoom(Room room);
+
+		void RemoveRoom(Room room);
+
+		void RemoveRoomById(int id);
 	}
 }

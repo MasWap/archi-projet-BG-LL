@@ -5,19 +5,40 @@ namespace GestionHotel.Apis.Services.Customer
 {
 	public class CustomerService : ICustomerService
 	{
-		public Task<Domain.Customers.Customer> CreateCustomer(Domain.Customers.Customer customer)
+
+		private readonly ICustomerRepository _customerRepository;
+
+		public CustomerService(ICustomerRepository customerRepository)
 		{
-			throw new NotImplementedException();
+			_customerRepository = customerRepository;
 		}
 
-		public Task<Domain.Customers.Customer> GetCustomerById(int id)
+		public async Task<Domain.Customers.Customer> CreateCustomer(Domain.Customers.Customer customer)
 		{
-			throw new NotImplementedException();
+			return await _customerRepository.CreateCustomer(customer);
 		}
 
-		public Task<Domain.Customers.Customer> UpdateCustomer(Domain.Customers.Customer customer)
+		public async Task<Domain.Customers.Customer> GetCustomerById(int id)
 		{
-			throw new NotImplementedException();
+			return await _customerRepository.GetCustomerById(id);
+		}
+
+		public async Task<Domain.Customers.Customer> UpdateCustomer(Domain.Customers.Customer customer)
+		{
+			return await _customerRepository.UpdateCustomer(customer);
+		}
+
+		public Task<bool> RemoveCustomer(Domain.Customers.Customer customer)
+		{
+			try
+			{
+				_customerRepository.RemoveCustomer(customer);
+				return Task.FromResult(true);
+			}
+			catch (Exception)
+			{
+				return Task.FromResult(true);
+			}
 		}
 	}
 }
