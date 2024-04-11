@@ -6,7 +6,6 @@ namespace GestionHotel.Apis.Controllers.BookingManagement
 {
 	[ApiController]
 	[Route("api/bookings")]
-	[Authorize]
 	public class BookingsController : ControllerBase
 	{
 		private readonly IBookingService _bookingService;
@@ -16,8 +15,18 @@ namespace GestionHotel.Apis.Controllers.BookingManagement
 			_bookingService = bookingService;
 		}
 
+		// GET /api/bookings
+		[HttpGet]
+		[Authorize]
+		public async Task<ActionResult<List<Booking>>> GetAllBookings()
+		{
+			var bookings = await _bookingService.GetBookings();
+			return Ok(bookings);
+		}
+
 		// GET /api/bookings/{id}
 		[HttpGet("{id}")]
+		[Authorize]
 		public async Task<ActionResult<Booking>> GetBookingById(int id)
 		{
 			var booking = await _bookingService.GetBookingById(id);
@@ -30,6 +39,7 @@ namespace GestionHotel.Apis.Controllers.BookingManagement
 
 		// GET /api/customers/{customerId}/bookings
 		[HttpGet("customer/{customerId}")]
+		[Authorize]
 		public async Task<ActionResult<List<Booking>>> GetBookingsByCustomerId(int customerId)
 		{
 			var bookings = await _bookingService.GetBookingsByCustomerId(customerId);
@@ -38,6 +48,7 @@ namespace GestionHotel.Apis.Controllers.BookingManagement
 
 		// GET /api/rooms/{roomId}/bookings
 		[HttpGet("room/{roomId}")]
+		[Authorize]
 		public async Task<ActionResult<List<Booking>>> GetBookingsByRoomId(int roomId)
 		{
 			var bookings = await _bookingService.GetBookingsByRoomId(roomId);

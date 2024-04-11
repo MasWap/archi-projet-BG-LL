@@ -16,7 +16,7 @@ namespace GestionHotel.Apis.Persistence.Repositories
 		async Task<Customer?> ICustomerRepository.GetCustomerById(int id)
 		{
 			return await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
-		}
+		} 
 
 		async Task<Customer> ICustomerRepository.CreateCustomer(Customer customer)
 		{
