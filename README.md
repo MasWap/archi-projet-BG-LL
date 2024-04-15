@@ -1,6 +1,6 @@
 # Rapport de projet : API de gestion hôtelière en C# .NET 7
 
-make by baptisteguillaume (@yso8) && lilianlayrac (@maswap)
+./ make by baptisteguillaume (@yso8) && lilianlayrac (@maswap)
 
 ## Introduction
 Ce rapport présente l'architecture et les fonctionnalités d'une API de gestion hôtelière développée en C# .NET 7. L'objectif principal de cette API est de fournir une solution complète pour la gestion des réservations, des clients, des employés et des chambres d'un hôtel.
