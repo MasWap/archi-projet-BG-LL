@@ -22,15 +22,5 @@ namespace GestionHotel.Apis.Services.Booking
 		{
 			return await _bookingRepository.GetBookingById(id);
 		}
-
-		public async Task<List<Domain.Bookings.Booking>> GetBookingsByCustomerId(int customerId)
-		{
-			return await _bookingRepository.GetBookingsByCustomerId(customerId);
-		}
-
-		public async Task<List<Domain.Bookings.Booking>> GetBookingsByRoomId(int roomId)
-		{
-			return await _bookingRepository.GetBookingsByRoomId(roomId);
-		}
 	}
 }

@@ -38,26 +38,26 @@ namespace GestionHotel.Apis.Services.Room
 			_roomRepository.UpdateRoom(room);
 		}
 
-		public async Task<List<Domain.Rooms.Room>> GetAvailableRooms(DateTime startDate, DateTime endDate)
-		{
-			// Récupérer toutes les chambres
-			var rooms = await _roomRepository.GetRooms();
+        public async Task<List<Domain.Rooms.Room>> GetAvailableRooms(DateTime startDate, DateTime endDate)
+        {
+            // Récupérer toutes les chambres
+            var rooms = await _roomRepository.GetRooms();
 
-			// Récupérer les réservations qui chevauchent la plage de dates spécifiée
-			var bookings = await _bookingRepository.GetBookingsByDateRange(startDate, endDate);
+            // Récupérer les réservations qui chevauchent la plage de dates spécifiée
+            var bookings = await _bookingRepository.GetBookingsByDateRange(startDate, endDate);
 
-			// Créer une liste d'IDs de réservations
-			var bookingIds = bookings.Select(b => b.RoomId).ToList();
+            // Créer une liste d'IDs de chambres réservées
+            var roomIds = bookings.Select(b => b.Room.Id).ToList();
 
-			// Filtrer les chambres qui n'ont pas de réservations chevauchantes
-			var availableRooms = bookingIds.FirstOrDefault() == 0
-				? rooms
-				: rooms.Where(r => !bookingIds.Contains(r.Id)).ToList();
+            // Filtrer les chambres qui n'ont pas de réservations chevauchantes
+            var availableRooms = roomIds.FirstOrDefault() == 0
+                ? rooms
+                : rooms.Where(r => !roomIds.Contains(r.Id)).ToList();
 
-			return availableRooms;
-		}
+            return availableRooms;
+        }
 
-		public async Task<Domain.Rooms.Room> GetRoomById(int id)
+        public async Task<Domain.Rooms.Room> GetRoomById(int id)
 		{
 			return await _roomRepository.GetRoomById(id);
 		}

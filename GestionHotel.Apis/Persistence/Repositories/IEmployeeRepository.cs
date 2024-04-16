@@ -6,7 +6,7 @@ namespace GestionHotel.Apis.Persistence.Repositories
 	{
 		Task<Employee> GetEmployeeById(int id);
 
-		Task<List<Employee>> GetEmployeesByRole(string role);
+		Task<List<Employee>> GetEmployeesByRole(int role);
 
 		Task<Employee> CreateEmployee(Employee employee);
 

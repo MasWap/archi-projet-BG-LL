@@ -27,7 +27,7 @@ namespace GestionHotel.Apis.Persistence.Repositories
 			return _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
 		}
 
-		public Task<List<Employee>> GetEmployeesByRole(string role)
+		public Task<List<Employee>> GetEmployeesByRole(int role)
 		{
 			return _context.Employees.Where(e => e.Role == role).ToListAsync();
 		}

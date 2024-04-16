@@ -36,23 +36,5 @@ namespace GestionHotel.Apis.Controllers.BookingManagement
 			}
 			return Ok(booking);
 		}
-
-		// GET /api/customers/{customerId}/bookings
-		[HttpGet("customer/{customerId}")]
-		[Authorize]
-		public async Task<ActionResult<List<Booking>>> GetBookingsByCustomerId(int customerId)
-		{
-			var bookings = await _bookingService.GetBookingsByCustomerId(customerId);
-			return Ok(bookings);
-		}
-
-		// GET /api/rooms/{roomId}/bookings
-		[HttpGet("room/{roomId}")]
-		[Authorize]
-		public async Task<ActionResult<List<Booking>>> GetBookingsByRoomId(int roomId)
-		{
-			var bookings = await _bookingService.GetBookingsByRoomId(roomId);
-			return Ok(bookings);
-		}
 	}
 }

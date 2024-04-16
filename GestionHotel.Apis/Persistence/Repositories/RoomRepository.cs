@@ -1,4 +1,5 @@
 ﻿using GestionHotel.Apis.Data;
+using GestionHotel.Apis.Domain.Bookings;
 using GestionHotel.Apis.Domain.Rooms;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,7 @@ namespace GestionHotel.Apis.Persistence.Repositories
 			return _context.Rooms.FirstOrDefaultAsync(r => r.Id == id);
 		}
 
-		public void UpdateRoom(Room room)
+        public void UpdateRoom(Room room)
 		{
 			_context.Rooms.Update(room);
 		}
