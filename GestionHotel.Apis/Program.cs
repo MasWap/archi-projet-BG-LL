@@ -4,8 +4,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using GestionHotel.Apis.Data;
-using System.Globalization;
-using System.Reflection;
 using GestionHotel.Apis.Filters;
 using GestionHotel.Apis.Persistence.Repositories;
 using GestionHotel.Apis.Domain.Customers;
