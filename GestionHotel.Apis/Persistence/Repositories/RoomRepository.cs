@@ -14,9 +14,11 @@ namespace GestionHotel.Apis.Persistence.Repositories
 			_context = context; 
 		}
 
-		public Task<List<Room>> GetRooms()
+		public async Task<List<Room>> GetRooms()
 		{
-			return _context.Rooms.ToListAsync();
+			return await _context.Rooms
+				.Include(r => r.Bookings)
+				.ToListAsync();
 		}
 
 		public Task<Room?> GetRoomById(int id)

@@ -23,14 +23,17 @@ namespace GestionHotel.Apis.Controllers.RoomManagement
 			var rooms = await _roomService.GetAvailableRooms(startDate, endDate);
 			return Ok(rooms);
 		}
-	}
 
-	// Classe de transfert de données pour la réservation d'une chambre
-	public class RoomBooking
-	{
-		public int CustomerId { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime EndDate { get; set; }
-		public string PaymentMethod { get; set; }
+		// GET /api/rooms/{id}
+		[HttpGet("{id}")]
+		public async Task<ActionResult<Room>> GetRoom(int id)
+		{
+			var room = await _roomService.GetRoomById(id);
+			if (room == null)
+			{
+				return NotFound();
+			}
+			return Ok(room);
+		}
 	}
 }

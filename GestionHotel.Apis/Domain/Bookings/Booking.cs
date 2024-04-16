@@ -12,7 +12,9 @@ namespace GestionHotel.Apis.Domain.Bookings
 		public int PaymentStatus { get; set; }
 		public int CancellationStatus { get; set; }
 		public bool CancellationRefund { get; set; }
-		public Room Room {  get; set; }
-		public Customer Customer { get; set; }
+		public Room? Room {  get; set; }
+		public int RoomId { get; set; }
+		public Customer? Customer { get; set; }
+		public int CustomerId { get; set; }
 	}
 }

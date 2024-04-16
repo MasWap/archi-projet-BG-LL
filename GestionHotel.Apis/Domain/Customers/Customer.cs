@@ -10,6 +10,5 @@ namespace GestionHotel.Apis.Domain.Customers
 		public string Email { get; set; }
 		public string PhoneNumber { get; set; }
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-
     }
 }
