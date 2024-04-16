@@ -19,14 +19,15 @@ namespace GestionHotel.Apis.Data.ModelConfigurations
             builder.Property(c => c.Capacity).IsRequired();
             builder.Property(c => c.Price).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(c => c.Status).IsRequired().HasMaxLength(50);
+            builder.HasMany(c => c.Bookings).WithOne(c => c.Room);
 
-            builder.HasData(
-                Room1,
-                Room2,
-                Room3,
-                Room4,
-                Room5
-            );
+            //builder.HasData(
+            //    Room1,
+            //    Room2,
+            //    Room3,
+            //    Room4,
+            //    Room5
+            //);
         }
     }
 }

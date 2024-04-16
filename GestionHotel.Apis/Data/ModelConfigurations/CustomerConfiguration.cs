@@ -17,12 +17,13 @@ namespace GestionHotel.Apis.Data.ModelConfigurations
 			builder.Property(c => c.LastName).IsRequired().HasMaxLength(50);
 			builder.Property(c => c.Email).IsRequired().HasMaxLength(100);
 			builder.Property(c => c.PhoneNumber).IsRequired().HasMaxLength(20);
+			builder.HasMany(c => c.Bookings).WithOne(c => c.Customer);
 
-            builder.HasData(
-                Customer1,
-                Customer2,
-                Customer3
-            );
+			//builder.HasData(
+   //             Customer1,
+   //             Customer2,
+   //             Customer3
+   //         );
 
         }
     }
